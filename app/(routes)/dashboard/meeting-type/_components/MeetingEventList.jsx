@@ -13,7 +13,7 @@ import {
   doc,
   getDoc,
 } from "firebase/firestore";
-import { Clock, Copy, MapPin, Pen, Settings, Trash } from "lucide-react";
+import { Clock, Copy, LoaderIcon, MapPin, Pen, Settings, Trash } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import {
@@ -30,6 +30,7 @@ function MeetingEventList() {
   const { user } = useKindeBrowserClient();
   const [businessInfo, setBusinessInfo] = useState();
   const [eventList, setEventList] = useState([]);
+  const [loading , setLoading] = useState(true);
   useEffect(() => {
     user && getEventList();
     user && BusinessInfo();
@@ -140,7 +141,7 @@ function MeetingEventList() {
           </div>
         ))
       ) : (
-        <h2>Loading... </h2>
+        <h2 className="flex gap-5">Loading... {loading ? <LoaderIcon className="animate-spin" /> : "Loading..."}</h2>
       )}
     </div>
   );

@@ -5,7 +5,7 @@ import MeetingEventList from './_components/MeetingEventList'
 
 
 function MeetingType() {
-  
+
  
   return (
     <div className='p-5'>

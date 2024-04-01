@@ -19,7 +19,7 @@ import { app } from "@/config/FirebaseConfig";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Loader2 } from "lucide-react";
 
 
 function MeetingForm({ setFormValue }) {
@@ -29,7 +29,7 @@ function MeetingForm({ setFormValue }) {
   const [locationType, setLocationType] = useState();
   const [locationUrl, setLocationUrl] = useState();
   const { user } = useKindeBrowserClient();
-
+  const [loading, setLoading] = useState(false);
   const db = getFirestore(app);
   const router = useRouter();
   useEffect(() => {
@@ -46,6 +46,7 @@ function MeetingForm({ setFormValue }) {
 
   const onCreateclick = async () => {
     const id = Date.now().toString();
+    setLoading(true);
     await setDoc(doc(db, "MeetingEvent", id), {
       id: id,
       eventName: eventName,
@@ -145,6 +146,7 @@ function MeetingForm({ setFormValue }) {
         onClick={() => onCreateclick()}
       >
         Create
+        {loading ? <Loader2 className="animate-spin" /> : "Create"}
       </Button>
       <Link href={"/dashboard"}>
         <Button variant="destructive" className="w-full mt-3">

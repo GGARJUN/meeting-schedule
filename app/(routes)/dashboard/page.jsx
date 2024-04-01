@@ -41,7 +41,7 @@ function Dashboard() {
   };
 
   if(loading) {
-    return <div>Checking your account...</div>;
+    return <div>Checking your account...{loading ? <LoaderIcon className="animate-spin" /> : "Checking your account..."}</div>;
   }
 
   return (

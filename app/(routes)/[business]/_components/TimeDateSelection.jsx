@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import React from "react";
 
+
 function TimeDateSelection({
   date,
   handleDateChange,
@@ -16,9 +17,9 @@ function TimeDateSelection({
   //  * @param {*} time
   //  * @returns Boolean
   //  */
-  // const checkTimeSlot = (time) => {
-  //   return prevBooking.filter((item) => item.selectedTime == time).length > 0;
-  // };
+  const checkTimeSlot = (time) => {
+    return prevBooking.filter((item) => item.selectedTime == time).length > 0;
+  };
   return (
     <div className="md:col-span-2 flex px-4">
       <div className="flex flex-col">
@@ -37,7 +38,7 @@ function TimeDateSelection({
       >
         {timeSlots?.map((time, index) => (
           <Button
-            // disabled={!enableTimeSlot || !checkTimeSlot(time)}
+          disabled={!enableTimeSlot||checkTimeSlot(time)}
             onClick={() => setSelectedTime(time)}
             className={`border-primary
              text-primary
