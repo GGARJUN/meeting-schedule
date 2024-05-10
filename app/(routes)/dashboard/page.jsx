@@ -15,6 +15,8 @@ import { LoaderIcon } from "lucide-react";
 
 function Dashboard() {
 
+  
+
   const db = getFirestore(app);
   const { user } = useKindeBrowserClient();
   const [loading , setLoading] = useState(true);
@@ -53,6 +55,7 @@ function Dashboard() {
       <LogoutLink>
         <Button>Logout</Button>
       </LogoutLink> */}
+      
     </div>
   );
 }
