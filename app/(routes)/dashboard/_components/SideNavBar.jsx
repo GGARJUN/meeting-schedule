@@ -43,7 +43,7 @@ function SideNavBar() {
   return (
     <div className="p-5 py-14">
       <div className="flex justify-center">
-        <Image src="/logo.svg" alt="logo" height={150} width={150} />
+        <Image src="/Logo.png" alt="logo" height={150} width={150} />
       </div>
       <Link href={"/create-meeting"}>
         <Button className="flex gap-2 w-full rounded-full mt-7">
